@@ -7,31 +7,24 @@ const PaymentUI = () => {
   
   const [timeLeft, setTimeLeft] = useState(600);
 
-  // useEffect to handle the countdown logic
   useEffect(() => {
-    // Stop the timer when it reaches 0
     if (timeLeft <= 0) return;
 
-    // Start a timer that runs every second
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => prevTime - 1);
     }, 1000);
 
-    // Cleanup the timer when the component is unmounted
     return () => clearInterval(timer);
   }, [timeLeft]);
 
-  // Convert timeLeft (in seconds) to hh:mm:ss format
-  const minutes = Math.floor((timeLeft % 3600) / 60); // Calculate minutes
-  const seconds = timeLeft % 60; // Calculate remaining seconds
+  const minutes = Math.floor((timeLeft % 3600) / 60); 
+  const seconds = timeLeft % 60; 
 
-  // Format the time with leading zeros (e.g., 00:10:00)
   const formattedTime = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 
   return (
     <section className="container">
       <div className="header">UPI Intent</div>
-{/* Timer Section */}
       <div className="timer-section">
   <div className="timer-row">
     <p className="timer-label">Payment Time Left</p>
@@ -40,7 +33,6 @@ const PaymentUI = () => {
 </div>
 
 
-      {/* Amount Section */}
       <div className="amount-section">
         <div className="amount-row">
           <p className="amount-label">Amount : <span className="amount-value">₹5000</span></p>
@@ -48,7 +40,6 @@ const PaymentUI = () => {
         </div>
       </div>
 
-      {/* Payment Options */}
       <div className="button-section">
         <button className="button">
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 48 48">
@@ -69,7 +60,6 @@ const PaymentUI = () => {
                         </svg>BHIM UPI</button>
       </div>
 
-    {/* Additional Logos */}
 <div className="logos-section">
   <button className="logo-button">
     <img src={logo1} alt="Norton Secure Logo" className="logo-image" />
@@ -80,7 +70,6 @@ const PaymentUI = () => {
 </div>
 
 
-      {/* Video Section */}
      <div className="video-section">
   <div className="video-instruction" style={{ fontSize: "18px", fontWeight: "bold", marginBottom: "10px" }}>
     Watch a video for quick deposit instruction
